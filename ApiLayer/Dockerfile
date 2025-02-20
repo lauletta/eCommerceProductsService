@@ -27,4 +27,6 @@ RUN dotnet publish "./ApiLayer.csproj" -c $BUILD_CONFIGURATION -o /app/publish /
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ENV SQL_HOST=*****
+ENV PASSWORD=******
 ENTRYPOINT ["dotnet", "ApiLayer.dll"]
